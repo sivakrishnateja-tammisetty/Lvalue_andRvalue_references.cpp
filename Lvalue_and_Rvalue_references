@@ -1,0 +1,80 @@
+*In C++, lvalue references and rvalue references are used to deal with different kinds of expressions and to enable move semantics. 
+*Here are examples of lvalue references (&) and rvalue references (&&).
+
+
+
+Eg1:Lvalue reference
+   ------------------
+
+
+#include<iostream>
+using namespace std;;
+void lvalueReference(int &a)
+{
+    cout<<"Lvalue reference is "<<a<<endl;
+}
+int main()
+{
+    int a=42;
+    lvalueReference(a);
+}
+
+o/p:42
+
+Instead of lvalue (a),we pass rvalue as 42 while calling function ,we will get compilation error.
+
+Note:In this example, lvalueReferenceExample is a function that takes an lvalue reference (int &x). When calling this function, you can only pass an lvalue (a variable), not an rvalue (a literal or temporary). Trying to pass an rvalue will result in a compilation error.
+
+
+
+
+Eg2:Rvalue reference
+    ----------------
+
+
+#include<iostream>
+using namespace std;;
+void RvalueReference(int &&a)
+{
+    cout<<"Rvalue reference is "<<a<<endl;
+}
+int main()
+{
+    int a=42;
+    RvalueReference(42);
+}
+
+
+o/p:42
+
+
+Note:
+  In this example, rvalueReferenceExample is a function that takes an rvalue reference (int &&x). When calling this function, you can only pass an rvalue (a literal or temporary), not an lvalue (a variable). Trying to pass an lvalue will result in a compilation error.
+
+
+
+
+
+Eg3:
+#include<iostream>
+using namespace std;
+template<typename T>
+void universalReference(T &&a)
+{
+    cout<<"Lvalue reference is "<<a<<endl;
+}
+int main()
+{
+    int a=42;
+    universalReference(42);
+    universalReference(a);
+    universalReference(10);
+    
+}
+
+
+
+
+
+
+
